@@ -53,12 +53,11 @@ async function longLatToBusStopIds(longLat : string[]) : Promise<string[]> {
 async function  postCodeToFirst5BusesAt2NearestBusStops(postcode : string) {
     const longLat = await postCodeToLongLat(postcode)
     const busStopIds: string[] = await longLatToBusStopIds(longLat)
-    let buses: string[] = []
+    let buses: string[][] = []
     
     for (let i = 0; i < busStopIds.length; i++) {
         let temp = await stopIDToFirst5Buses(busStopIds[i])
-        buses = buses.concat(temp)
-        console.log(temp)
+        buses.push(temp)
     }
     console.log(buses)
 }

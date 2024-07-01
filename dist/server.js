@@ -66,8 +66,7 @@ function postCodeToFirst5BusesAt2NearestBusStops(postcode) {
         let buses = [];
         for (let i = 0; i < busStopIds.length; i++) {
             let temp = yield stopIDToFirst5Buses(busStopIds[i]);
-            buses = buses.concat(temp);
-            console.log(temp);
+            buses.push(temp);
         }
         console.log(buses);
     });
